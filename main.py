@@ -1,7 +1,4 @@
-from multiprocessing import Process
 from cv2 import cv2
-import numpy as np
-import time
 import threading
 
 
@@ -18,7 +15,7 @@ def face_scan(cam_name, cam_num):
     while True:
         success, image = camera.read()
         # delete line under this if not testing, this flips image 180
-        image = cv2.flip(image, 0)
+        #image = cv2.flip(image, 0)
         image_gray = cv2.cvtColor(image, cv2.COLOR_BGR2GRAY)
         faces = face_cascade.detectMultiScale(image_gray, 1.1, 4)
 
@@ -45,9 +42,9 @@ if __name__ == '__main__':
     #Process(target = face_scan(0)).start()
     #Process(target = face_scan(1)).start()
     thread1 = scan_thread("Street Cam", 0)
-    thread2 = scan_thread("Face Cam", 1)
+    #thread2 = scan_thread("Face Cam", 1)
     
     thread1.start()
-    thread2.start()
+    ##thread2.start()
     
     print("Active threads", threading.activeCount())
