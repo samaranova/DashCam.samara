@@ -30,7 +30,7 @@ def getDims(recording, res='1080p'):
     change_res(recording, width, height)
     return width, height
 
-//Codecc, mp4 will throw a warning, but still works
+#Codecc, mp4 will throw a warning, but still works
 VIDEO_TYPE = {
     'mp4': cv2.VideoWriter_fourcc(*'XVID'),
     'avi': cv2.VideoWriter_fourcc(*'XVID'),
@@ -43,7 +43,7 @@ def getVidType(filename):
     return VIDEO_TYPE['mp4']
 
 
-
+global recording
 recording = cv2.VideoCapture(0) #value '0' means camera is recording from default computer camera
 dims = getDims(recording, res=resolut)
 vidType = getVidType(filename)
@@ -64,3 +64,7 @@ recording.release()
 out.release()
 cv2.destroyAllWindows()
 
+#def startRecording()
+
+
+#def stopRecording()
